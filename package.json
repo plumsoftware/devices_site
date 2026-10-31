@@ -1,0 +1,17 @@
+{
+  "name": "devices-diagnostic-pro",
+  "version": "2.0.0",
+  "description": "Профессиональный веб-сервис онлайн-диагностики оборудования (клавиатура, мышь, аудио, микрофон, камера, экран, сеть)",
+  "main": "index.html",
+  "scripts": {
+    "start": "npx http-server . -p 3000",
+    "dev": "npx http-server . -p 3000",
+    "serve": "npx serve ."
+  },
+  "dependencies": {
+    "http-server": "^14.1.1"
+  },
+  "devDependencies": {
+    "serve": "^14.2.4"
+  }
+}

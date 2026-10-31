@@ -1,0 +1,109 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
+:root { color-scheme: light; }
+html { scroll-behavior: smooth; }
+body { min-width: 320px; }
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 99px; }
+::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
+
+.keycap {
+    background: #1e293b;
+    color: #94a3b8;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    box-shadow: 0 4px 0 #0f172a, inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    transition: all 0.08s ease;
+    user-select: none;
+}
+.keycap.active {
+    background: #2563eb !important;
+    color: #ffffff !important;
+    border-color: #60a5fa !important;
+    box-shadow: 0 0 15px rgba(37, 99, 235, 0.45), inset 0 1px 0 rgba(255, 255, 255, 0.4) !important;
+    transform: translateY(2px);
+}
+.keycap.tested {
+    background: #059669 !important;
+    color: #ffffff !important;
+    border-color: #34d399 !important;
+    box-shadow: 0 2px 0 #064e3b;
+}
+.hero-computer { max-height: 390px; filter: drop-shadow(0 24px 28px rgba(37, 99, 235, 0.10)); }
+#topControls { min-height: 46px; }
+.ad-section {
+    position: fixed;
+    left: 16rem;
+    right: 0;
+    bottom: 0;
+    z-index: 40;
+    width: auto;
+    max-width: none;
+    margin: 0;
+    padding: 8px 16px calc(8px + env(safe-area-inset-bottom));
+    background: rgba(255, 255, 255, .97);
+    border-top: 1px solid #e2e8f0;
+    backdrop-filter: blur(14px);
+}
+.ad-caption { color: #94a3b8; font-size: 10px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; margin: 0 0 5px 4px; text-align: center; }
+.ad-banner-slot { min-height: 70px; max-height: 90px; width: min(100%, 970px); margin: 0 auto; display: flex; align-items: center; justify-content: center; overflow: hidden; }
+.ad-banner-slot iframe { max-width: 100%; }
+.ad-banner-slot:empty { display: none; }
+.diagnostic-card { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 16px; padding: 16px; min-width: 0; }
+.diagnostic-card .diagnostic-label { color: #64748b; font-size: 12px; font-weight: 600; }
+.diagnostic-card .diagnostic-value { color: #0f172a; font-size: 15px; font-weight: 750; margin-top: 5px; overflow-wrap: anywhere; }
+.diagnostic-card .diagnostic-note { color: #64748b; font-size: 11px; margin-top: 4px; }
+.diagnostic-action { display: inline-flex; align-items: center; gap: 8px; padding: 12px 16px; border-radius: 14px; background: #2563eb; color: #fff; font-weight: 700; font-size: 13px; transition: background .15s ease; }
+.diagnostic-action:hover { background: #1d4ed8; }
+.diagnostic-status { border-radius: 14px; padding: 12px 14px; font-size: 13px; background: #eff6ff; color: #1d4ed8; }
+
+body.dark-mode { background-color: #0f172a !important; color: #f8fafc !important; color-scheme: dark; }
+body.dark-mode aside, body.dark-mode #topControls button, body.dark-mode #topControls select,
+body.dark-mode .bg-white, body.dark-mode [class~="bg-white"], body.dark-mode [class*="bg-white/"] {
+    background-color: #1e293b !important;
+    border-color: #334155 !important;
+    color: #f8fafc !important;
+}
+body.dark-mode .text-slate-900 { color: #f8fafc !important; }
+body.dark-mode .text-slate-800, body.dark-mode .text-slate-700 { color: #e2e8f0 !important; }
+body.dark-mode .text-slate-600 { color: #cbd5e1 !important; }
+body.dark-mode .text-slate-500 { color: #94a3b8 !important; }
+body.dark-mode .bg-slate-50, body.dark-mode .bg-slate-100 { background-color: #111c30 !important; }
+body.dark-mode .border-slate-200, body.dark-mode .border-slate-200\/70, body.dark-mode .border-slate-200\/80 { border-color: #334155 !important; }
+body.dark-mode .diagnostic-card { background: #111c30; border-color: #334155; }
+body.dark-mode .diagnostic-card .diagnostic-value { color: #f8fafc; }
+body.dark-mode .ad-section { background: rgba(15, 23, 42, .97); border-top-color: #334155; }
+body.dark-mode .ad-caption { color: #64748b; }
+body.dark-mode .bg-gradient-to-r.from-blue-50\/80 { background-image: linear-gradient(110deg, rgba(30,58,138,.25), rgba(30,41,59,.7)) !important; border-color: #334155 !important; }
+body.dark-mode .bg-gradient-to-b.from-blue-100\/60 { background-image: linear-gradient(to bottom, rgba(30,58,138,.22), rgba(30,41,59,.8)) !important; border-color: #334155 !important; }
+body.dark-mode .bg-blue-50, body.dark-mode .bg-blue-50\/80, body.dark-mode .bg-indigo-50, body.dark-mode .bg-emerald-50,
+body.dark-mode .bg-amber-50, body.dark-mode .bg-sky-50, body.dark-mode .bg-pink-100 { background-color: #1e293b !important; }
+body.dark-mode .text-emerald-900, body.dark-mode .text-emerald-800, body.dark-mode .text-blue-800 { color: #a7f3d0 !important; }
+body.dark-mode #howModal > div { background-color: #1e293b; border-color: #334155; }
+
+@media (max-width: 900px) {
+    .ad-section { left: 5rem; }
+    .hero-computer { max-height: 330px; }
+    aside { width: 5rem !important; }
+    aside .h-20 { justify-content: center; padding-left: 0; padding-right: 0; }
+    aside .h-20 span, aside nav span, aside > div:last-child { display: none; }
+    aside nav { padding-left: .5rem !important; padding-right: .5rem !important; }
+    aside .nav-btn { justify-content: center; padding-left: .5rem !important; padding-right: .5rem !important; }
+}
+@media (max-width: 640px) {
+    .ad-section { left: 0; padding-left: 10px; padding-right: 10px; }
+    main { padding-bottom: 116px !important; }
+    body { display: block !important; }
+    aside { display: flex !important; position: relative !important; top: auto !important; width: 100% !important; height: auto !important; min-height: 0 !important; border-right: 0 !important; border-bottom: 1px solid #e2e8f0; }
+    aside > div:first-child { width: 100%; }
+    aside .h-20 { height: 56px !important; justify-content: flex-start !important; padding: 0 16px !important; }
+    aside .h-20 span { display: inline !important; }
+    aside nav { display: flex !important; overflow-x: auto; white-space: nowrap; gap: 6px; padding: 0 12px 10px !important; margin-top: 0 !important; }
+    aside nav .nav-btn { width: auto !important; flex: 0 0 auto; padding: 8px 12px !important; justify-content: flex-start !important; }
+    aside nav .nav-btn span { display: inline !important; }
+    aside > div:last-child { display: none !important; }
+    #topControls { padding-left: 16px; padding-right: 16px; }
+    main { padding-left: 16px !important; padding-right: 16px !important; }
+    .hero-computer { max-height: 260px; }
+    .view-panel > div { padding: 20px !important; }
+}
