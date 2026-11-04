@@ -6,7 +6,7 @@
 window.DEVICES_ADS_CONFIG = {
     enabled: false,
     bannerBlockId: 'R-A-20336948-1',
-    fullscreenBlockId: '',
+    fullscreenBlockId: 'R-A-20336948-2',
     // Show a fullscreen ad after this many real section changes (not on initial page load).
     fullscreenEveryNavigations: 2
 };
