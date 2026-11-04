@@ -1,0 +1,94 @@
+
+name: Build Timeweb Archive
+
+on:
+  push:
+    branches:
+      - main
+      - master
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    name: Prepare Timeweb ZIP
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Install dependencies and build
+        shell: bash
+        run: |
+          if [ -f package.json ]; then
+            HAS_BUILD=$(node -e "const p=require('./package.json'); process.stdout.write(p.scripts?.build ? 'yes' : 'no')")
+
+            if [ "$HAS_BUILD" = "yes" ]; then
+              if [ -f package-lock.json ]; then
+                npm ci
+              else
+                npm install
+              fi
+
+              npm run build
+            else
+              echo "No build script. Static site detected."
+            fi
+          fi
+
+      - name: Prepare ZIP archive
+        shell: bash
+        run: |
+          if [ -f package.json ] && node -e "process.exit(require('./package.json').scripts?.build ? 0 : 1)"; then
+            if [ -d dist ]; then
+              SOURCE="dist"
+            elif [ -d build ]; then
+              SOURCE="build"
+            else
+              SOURCE="."
+            fi
+          else
+            SOURCE="."
+          fi
+
+          mkdir -p timeweb-package
+
+          if [ "$SOURCE" = "." ]; then
+            rsync -a ./ timeweb-package/ \
+              --exclude='.git/' \
+              --exclude='.github/' \
+              --exclude='node_modules/' \
+              --exclude='timeweb-package/' \
+              --exclude='timeweb_host.zip' \
+              --exclude='package.json' \
+              --exclude='package-lock.json' \
+              --exclude='npm-shrinkwrap.json' \
+              --exclude='.DS_Store' \
+              --exclude='Thumbs.db'
+          else
+            rsync -a "$SOURCE/" timeweb-package/
+          fi
+
+          cd timeweb-package
+          zip -r ../timeweb_host.zip .
+          cd ..
+
+          echo "Archive created:"
+          ls -lh timeweb_host.zip
+
+      - name: Upload Timeweb archive
+        uses: actions/upload-artifact@v4
+        with:
+          name: timeweb-host
+          path: timeweb_host.zip
+          if-no-files-found: error
+          retention-days: 30
