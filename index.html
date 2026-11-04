@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
+    <base href="/">
     <link rel="icon" type="image/x-icon" href="favicon.ico">
     <link rel="icon" type="image/png" sizes="192x192" href="favicon.png">
     <link rel="apple-touch-icon" href="apple-touch-icon.png">
@@ -9,7 +10,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/x-icon" href="favicon.ico">
     <title>Девайсы — диагностика устройств</title>
-    <meta name="description" content="Бесплатный сервис для проверки ваших девайсов на компьютере. Быстро и точно. Без регистрации и входа. Бесплатно. Проверка устройств." />
+    <meta name="description" content="Бесплатно проверьте клавиатуру, мышь, микрофон, веб-камеру, динамики и экран прямо в браузере. Онлайн-диагностика устройств без установки программ." />
+    <link rel="canonical" href="https://xn--80acbhf1b.xn--p1ai/">
+    <meta name="robots" content="index, follow, max-image-preview:large">
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/lucide@latest"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -634,6 +637,25 @@
                     </div>
                 </div>
             </div>
+
+
+            <nav class="mt-10 rounded-2xl border border-slate-200 bg-white p-5 text-sm" aria-label="Все онлайн-проверки">
+                <h2 class="mb-3 font-bold text-slate-900">Онлайн-проверки устройств</h2>
+                <div class="flex flex-wrap gap-x-4 gap-y-2">
+                    <a class="text-blue-600 hover:underline" href="/keyboard-test/">Клавиатура</a>
+                    <a class="text-blue-600 hover:underline" href="/mouse-test/">Мышь</a>
+                    <a class="text-blue-600 hover:underline" href="/speakers-test/">Динамики</a>
+                    <a class="text-blue-600 hover:underline" href="/headphones-test/">Наушники</a>
+                    <a class="text-blue-600 hover:underline" href="/microphone-test/">Микрофон</a>
+                    <a class="text-blue-600 hover:underline" href="/camera-test/">Веб-камера</a>
+                    <a class="text-blue-600 hover:underline" href="/screen-test/">Экран</a>
+                    <a class="text-blue-600 hover:underline" href="/usb-test/">USB</a>
+                    <a class="text-blue-600 hover:underline" href="/wifi-test/">Интернет и Wi-Fi</a>
+                    <a class="text-blue-600 hover:underline" href="/bluetooth-test/">Bluetooth</a>
+                    <a class="text-blue-600 hover:underline" href="/system-test/">Система</a>
+                    <a class="text-blue-600 hover:underline" href="/more-tests/">Другие проверки</a>
+                </div>
+            </nav>
 
             <!-- Yandex banner: in-flow, placed after the active view. -->
             <section id="yandexBannerSection" class="ad-section hidden" aria-label="Реклама">

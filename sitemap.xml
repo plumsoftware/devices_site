@@ -1,8 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-    <url>
-        <loc>https://девлаб.рф/</loc>
-        <changefreq>weekly</changefreq>
-        <priority>1.0</priority>
-    </url>
+  <url><loc>https://xn--80acbhf1b.xn--p1ai/</loc></url>
+  <url><loc>https://xn--80acbhf1b.xn--p1ai/keyboard-test/</loc></url>
+  <url><loc>https://xn--80acbhf1b.xn--p1ai/mouse-test/</loc></url>
+  <url><loc>https://xn--80acbhf1b.xn--p1ai/speakers-test/</loc></url>
+  <url><loc>https://xn--80acbhf1b.xn--p1ai/headphones-test/</loc></url>
+  <url><loc>https://xn--80acbhf1b.xn--p1ai/microphone-test/</loc></url>
+  <url><loc>https://xn--80acbhf1b.xn--p1ai/camera-test/</loc></url>
+  <url><loc>https://xn--80acbhf1b.xn--p1ai/screen-test/</loc></url>
+  <url><loc>https://xn--80acbhf1b.xn--p1ai/usb-test/</loc></url>
+  <url><loc>https://xn--80acbhf1b.xn--p1ai/wifi-test/</loc></url>
+  <url><loc>https://xn--80acbhf1b.xn--p1ai/bluetooth-test/</loc></url>
+  <url><loc>https://xn--80acbhf1b.xn--p1ai/system-test/</loc></url>
+  <url><loc>https://xn--80acbhf1b.xn--p1ai/more-tests/</loc></url>
 </urlset>

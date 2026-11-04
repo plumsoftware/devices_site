@@ -103,7 +103,32 @@ function writeSetting(key, value) {
 }
 const T = (ru, en) => currentLang === 'en' ? (en || translations[ru] || ru) : ru;
 let currentLang = readSetting('devices-language') || 'ru';
-let currentPage = 'main';
+const PAGE_PATHS = {
+    main: '/', keyboard: '/keyboard-test/', mouse: '/mouse-test/',
+    speakers: '/speakers-test/', headphones: '/headphones-test/', mic: '/microphone-test/',
+    camera: '/camera-test/', screen: '/screen-test/', usb: '/usb-test/',
+    wifi: '/wifi-test/', bluetooth: '/bluetooth-test/', system: '/system-test/', more: '/more-tests/'
+};
+function pageFromPath(pathname = window.location.pathname) {
+    const normalized = pathname.endsWith('/') ? pathname : `${pathname}/`;
+    return Object.keys(PAGE_PATHS).find(key => PAGE_PATHS[key] === normalized) || 'main';
+}
+const PAGE_TITLES_RU = {
+    main: 'Девайсы — онлайн-диагностика устройств',
+    keyboard: 'Проверка клавиатуры онлайн — тест всех клавиш | Девайсы',
+    mouse: 'Проверка мыши онлайн — тест кнопок и колёсика | Девайсы',
+    speakers: 'Тест динамиков онлайн — проверка стереоканалов | Девайсы',
+    headphones: 'Проверка наушников онлайн — тест стереоканалов | Девайсы',
+    mic: 'Проверка микрофона онлайн — тест уровня звука | Девайсы',
+    camera: 'Проверка веб-камеры онлайн — тест камеры | Девайсы',
+    screen: 'Тест экрана онлайн — проверка цветов и пикселей | Девайсы',
+    usb: 'Проверка USB онлайн — тест подключения устройства | Девайсы',
+    wifi: 'Проверка интернета и Wi-Fi онлайн — тест соединения | Девайсы',
+    bluetooth: 'Проверка Bluetooth онлайн — поиск устройств | Девайсы',
+    system: 'Диагностика системы онлайн — информация об устройстве | Девайсы',
+    more: 'Дополнительная диагностика устройства онлайн | Девайсы'
+};
+let currentPage = pageFromPath();
 const originalText = new WeakMap();
 
 function translateDocument() {
@@ -133,7 +158,7 @@ function translateDocument() {
         if (window.lucide) window.lucide.createIcons();
     }
     document.documentElement.lang = currentLang;
-    document.title = currentLang === 'en' ? 'Devices — online device diagnostics' : 'Девайсы — диагностика устройств';
+    document.title = currentLang === 'en' ? 'Devices — online device diagnostics' : (PAGE_TITLES_RU[currentPage] || PAGE_TITLES_RU.main);
 }
 
 function setLanguage(lang) {
@@ -148,8 +173,13 @@ function setLanguage(lang) {
     }
 }
 
-function switchPage(pageId) {
+function switchPage(pageId, options = {}) {
     const previousPage = currentPage;
+    if (!PAGE_PATHS[pageId]) pageId = 'main';
+    const targetPath = PAGE_PATHS[pageId];
+    if (options.updateHistory !== false && window.location.pathname !== targetPath) {
+        window.history.pushState({ pageId }, '', targetPath);
+    }
     currentPage = pageId;
     document.querySelectorAll('.view-panel').forEach(panel => panel.classList.add('hidden'));
     document.querySelectorAll('.nav-btn').forEach(btn => {
@@ -187,7 +217,7 @@ function switchPage(pageId) {
     if (previousPage !== pageId && previousPage !== 'main' && typeof window.devicesShowInterstitial === 'function') {
         window.devicesShowInterstitial();
     }
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    if (options.scroll !== false) window.scrollTo({ top: 0, behavior: 'smooth' });
     if (window.lucide) window.lucide.createIcons();
 }
 
@@ -623,5 +653,9 @@ document.addEventListener('DOMContentLoaded', () => {
     if (savedTheme === 'dark') document.body.classList.add('dark-mode');
     document.getElementById('langSelect')?.addEventListener('change', event => setLanguage(event.target.value));
     translateDocument();
-    if (['usb', 'wifi', 'system', 'bluetooth', 'more'].includes(currentPage)) openGenericView(currentPage);
+    switchPage(currentPage, { updateHistory: false, scroll: false });
+});
+
+window.addEventListener('popstate', () => {
+    switchPage(pageFromPath(), { updateHistory: false });
 });

@@ -1,3 +1,4 @@
 User-agent: *
 Allow: /
-Sitemap: https://prof-focus-studio.ru/sitemap.xml
+
+Sitemap: https://xn--80acbhf1b.xn--p1ai/sitemap.xml

@@ -35,3 +35,7 @@ npm start
 ## Развёртывание
 
 См. [TIMEWEB_DEPLOY.md](TIMEWEB_DEPLOY.md). Загружайте содержимое папки проекта без `node_modules`.
+
+## Поисковая индексация
+
+См. [YANDEX_WEBMASTER.md](YANDEX_WEBMASTER.md) — добавление сайта, Sitemap и проверка страниц в Яндекс Вебмастере.
