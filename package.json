@@ -6,7 +6,8 @@
   "scripts": {
     "start": "npx http-server . -p 3000",
     "dev": "npx http-server . -p 3000",
-    "serve": "npx serve ."
+    "serve": "npx serve .",
+    "build:timeweb": "node scripts/build-timeweb.js"
   },
   "dependencies": {
     "http-server": "^14.1.1"
